@@ -18,10 +18,8 @@ void IRAM_ATTR onTimer() {
 			tempo--;
 		} else {
 			flagLed = 0;
-			if (sentidoHorario == 0) {
-				sentidoHorario = 1;
-			} else {
-				sentidoHorario = 0;
+			if (!digitalRead(botaoPin)) {
+				sentidoHorario = !sentidoHorario;
 			}
 		}
 	}
@@ -60,7 +58,7 @@ void loop() {
 
 	if (sentidoHorario) {
 		digitalWrite(leds[ledEscolhido], 1);
-		if(tempoPassado > 500) {
+		if (tempoPassado > 500) {
 			tempoPassado = 0;
 			digitalWrite(leds[ledEscolhido], 0);
 			if (ledEscolhido < totalLeds - 1) {
@@ -71,7 +69,7 @@ void loop() {
 		}
 	} else {
 		digitalWrite(leds[ledEscolhido], 1);
-		if(tempoPassado > 500) {
+		if (tempoPassado > 500) {
 			tempoPassado = 0;
 			digitalWrite(leds[ledEscolhido], 0);
 			if (ledEscolhido > 0) {
