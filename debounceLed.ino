@@ -18,7 +18,7 @@ void IRAM_ATTR onTimer() {
 			tempo--;
 		} else {
 			flagLed = 0;
-			if (!digitalRead(botaoPin)) {
+			if (digitalRead(botaoPin)) {
 				sentidoHorario = !sentidoHorario;
 			}
 		}
