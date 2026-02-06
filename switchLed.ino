@@ -29,7 +29,7 @@ void setup() {
 }
 
 void loop() {
-  if (tempo >= 500) {
+  if (tempo >= 50) {
     tempo = 0;
     flag++;
     if (flag % 2 == 0) {
