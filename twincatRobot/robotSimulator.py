@@ -12,12 +12,12 @@ with plc:
     while True:
         target_position = plc.read_by_name("GVL.position", pyads.PLCTYPE_INT)
         if target_position != current_position:
-            print(f"Movendo do destino {current_position} para {target_position}...")
+            print(f"Movendo do ponto {current_position} para {target_position}...")
             plc.write_by_name("GVL.robotStatus", 0, pyads.PLCTYPE_INT)
             time.sleep(2)
             current_position = target_position
             plc.write_by_name("GVL.robotStatus", 1, pyads.PLCTYPE_INT)
-            print(f"Chegou no destino {current_position}.")
+            print(f"Chegou no ponto {current_position}.")
         else:
             plc.write_by_name("GVL.robotStatus", 1, pyads.PLCTYPE_INT)
             time.sleep(0.1)
