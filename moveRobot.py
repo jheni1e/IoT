@@ -54,7 +54,8 @@ try:
             print("Garra aberta." if grip else "Garra fechada.")
 
             print("Indo...")
-            time.sleep(2)
+            while plc.read_by_name("GVL.position", pyads.PLCTYPE_INT) != last_position:
+                time.sleep(0.1)
             plc.write_by_name("GVL.robotStatus", 1, pyads.PLCTYPE_INT)
             print(f"Destino {positions[position]} alcançado!\n")
 except Exception as e:
