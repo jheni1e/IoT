@@ -44,7 +44,7 @@ try:
 
             while True:
                 try:
-                    grip = int(input("Escolha a garra (0=Fechada, 1=Aberta): "))
+                    grip = int(input("Escolha a garra (0 = Fechada, 1 = Aberta): "))
                     if grip in (0, 1):
                         break
                 except ValueError:
