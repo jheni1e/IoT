@@ -1,7 +1,7 @@
 import pyads
 import time
 
-AMS_NET_ID = ''
+AMS_NET_ID = '192.168.56.1.1.1'
 ADS_PORT = 851
 
 positions = {
@@ -54,9 +54,7 @@ try:
             print("Garra aberta." if grip else "Garra fechada.")
 
             print("Indo...")
-            while plc.read_by_name("GVL.position", pyads.PLCTYPE_INT) != last_position:
+            while plc.read_by_name("GVL.robotStatus", pyads.PLCTYPE_INT) != 1:
                 time.sleep(0.1)
-            plc.write_by_name("GVL.robotStatus", 1, pyads.PLCTYPE_INT)
-            print(f"Destino {positions[position]} alcançado!\n")
 except Exception as e:
     print(f"Erro: {e}")
